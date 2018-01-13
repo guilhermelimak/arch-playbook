@@ -1,0 +1,12 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - file:
+      src={{ item.path }}
+      dest={{ item.dest }}
+      state=link
+    with_items:
+      - { path: '~/vim-setup/.vim', dest: '~/.vim' }
+      - { path: '~/vim-setup/.vimrc', dest: '~/.vimrc' }
+      - { path: '~/dotfiles/.i3/config', dest: '~/.config/i3/config' }

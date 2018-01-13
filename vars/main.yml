@@ -1,0 +1,31 @@
+---
+common_software:
+  - the_silver_searcher
+  - vim
+  - docker
+  - tmux
+
+dev_software:
+  - libcurl-openssl-1.0
+  - terminator
+  - sxhkd
+  - termite
+  - nitrogen
+  - gitkraken
+  - i3-gaps
+  - atom
+  - polybar
+  - redshift
+  - dotnet
+  - veracrypt
+  - chromium
+  - rofi
+  - redshift
+
+server_software:
+  - openssh
+
+fonts:
+  - ttf-fira-code
+  - ttf-fira-mono
+  - ttf-iosevka

@@ -1,0 +1,14 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - name: install common software
+    command: yaourt -S '{{ item }}' --noconfirm
+    with_items: '{{ common_software }}'
+
+  - name: install server software
+    command: yaourt -S '{{ item }}' --noconfirm
+    with_items: '{{ server_software }}'
+
+  vars_files:
+    - vars/main.yml

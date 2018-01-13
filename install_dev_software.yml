@@ -1,0 +1,22 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - name: install common software
+    command: yaourt -S '{{ item }}' --noconfirm
+    with_items: '{{ common_software }}'
+
+  - name: install fonts
+    command: yaourt -S '{{ item }}' --noconfirm
+    with_items: '{{ fonts }}'
+
+  - name: install server software
+    command: yaourt -S '{{ item }}' --noconfirm
+    with_items: '{{ server_software }}'
+
+  - name: install software
+    command: yaourt -S '{{ item }}' --noconfirm
+    with_items: '{{ dev_software }}'
+
+  vars_files:
+    - vars/main.yml

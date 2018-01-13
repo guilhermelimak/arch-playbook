@@ -1,0 +1,25 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+  # Downloaded from https://github.com/sbaerlocher/ansible.yaourt/blob/master/tasks/main.yml
+  - name: "add archlinux.fr repository to pacman"
+    lineinfile:
+      dest: "/etc/pacman.conf"
+      state: "present"
+      line: "{{ item }}"
+    with_items:
+      - "[archlinuxfr]"
+      - "SigLevel = Never"
+      - "Server = http://repo.archlinux.fr/$arch"
+    when: ansible_distribution == "ArchLinux"
+    tags:
+      - packages
+
+  - name: "install yaourt"
+    pacman:
+      name: "yaourt"
+      state: "present"
+    when: ansible_distribution == "ArchLinux"
+    tags:
+      - packages

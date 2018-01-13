@@ -1,0 +1,18 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - name: Get tmux config
+    get_url:
+      url: https://gist.githubusercontent.com/guilhermelimak/68cf1f1c7b24cdfc341c53e333c20a67/raw/3c5713f5cbf5036e07ee6a73739654368e2ab6df/.tmux.conf
+      dest: ~/.tmux.conf
+
+  - name: Get vim config
+    git: repo=https://github.com/guilhermelimak/vim-setup.git
+      dest=~/vim-setup
+      force=yes
+
+  - name: Get dotfiles
+    git: repo=https://github.com/guilhermelimak/dotfiles.git
+      dest=~/dotfiles
+      force=yes
