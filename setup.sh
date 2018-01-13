@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo pacman -Syu ansible --noconfirm
+sudo pacman -Sy ansible yaourt --noconfirm
 
 ansible-playbook setup_dev.yml
 
