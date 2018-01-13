@@ -1,2 +1,2 @@
 - name: install package
-  shell: yes | yaourt --m-arg "--skipchecksums --skippgpcheck" -S '{{ item }}' --noconfirm
+  shell: yes | yaourt --m-arg "--skipchecksums --skippgpcheck" -S '{{ item }}'
