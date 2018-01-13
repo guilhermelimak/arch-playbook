@@ -2,20 +2,16 @@
 - hosts: 127.0.0.1
   connection: local
   tasks:
-  - name: install common software
-    command: yes | yaourt --m-arg "--skipchecksums --skippgpcheck" -S '{{ item }}' --noconfirm
+  - include: install_package.yml
     with_items: '{{ common_software }}'
 
-  - name: install fonts
-    command: yes | yaourt --m-arg "--skipchecksums --skippgpcheck"-S '{{ item }}' --noconfirm
-    with_items: '{{ fonts - }}'
+  - include: install_package.yml
+    with_items: '{{ fonts }}'
 
-  - name: install server  -software
-    command: yes | yaourt --m-arg "--skipchecksums --skippgpcheck"-S '{{ item }}' --noconfirm
+  - include: install_package.yml
     with_items: '{{ server_software }}'
 
-  - name: install software
-    command: yes | yaourt --m-arg "--skipchecksums --skippgpcheck" -S '{{ item }}' --noconfirm
+  - include: install_package.yml
     with_items: '{{ dev_software }}'
 
   vars_files:
