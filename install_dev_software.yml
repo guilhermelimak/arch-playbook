@@ -3,20 +3,21 @@
   connection: local
   tasks:
   - name: install common software
-    command: yaourt -S '{{ item }}' --noconfirm
+    command: yes | yaourt --m-arg "--skipchecksums --skippgpcheck" -S '{{ item }}' --noconfirm
     with_items: '{{ common_software }}'
 
   - name: install fonts
-    command: yaourt -S '{{ item }}' --noconfirm
-    with_items: '{{ fonts }}'
+    command: yes | yaourt --m-arg "--skipchecksums --skippgpcheck"-S '{{ item }}' --noconfirm
+    with_items: '{{ fonts - }}'
 
-  - name: install server software
-    command: yaourt -S '{{ item }}' --noconfirm
+  - name: install server  -software
+    command: yes | yaourt --m-arg "--skipchecksums --skippgpcheck"-S '{{ item }}' --noconfirm
     with_items: '{{ server_software }}'
 
   - name: install software
-    command: yaourt -S '{{ item }}' --noconfirm
+    command: yes | yaourt --m-arg "--skipchecksums --skippgpcheck" -S '{{ item }}' --noconfirm
     with_items: '{{ dev_software }}'
 
   vars_files:
     - vars/main.yml
+
